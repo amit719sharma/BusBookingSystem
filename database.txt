@@ -1,0 +1,7 @@
+Sessions:-sessions are the special memory buffer that create autometically in the user machine when user open the web browser 
+used by server to track user/client.
+ex:when you login fb,whattsapp,gmail etc. in your device it will remain login untill user logout
+setItem()
+getItem()
+removeItem()
+clear()

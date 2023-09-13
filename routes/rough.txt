@@ -1,0 +1,11 @@
+router.get("/fetchallcities", function (req, res) {
+  pool.query("select* from cities",function(error,result){
+    if(error){
+        res.status(500).json({result:[],message:'Server Error'})
+    }
+    else
+    {
+       res.status(200).json({result:result,message:'Success'}) 
+    }
+  })
+});

@@ -1,0 +1,172 @@
+<style>
+.maincontainer{
+    background:#dbbe02;
+    width:100vw;
+    height:100vh;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+}
+.box
+{ width:70%;
+  height:70%;
+  background: #d9cd7f;
+  justify-content: center;
+  align-items: center;
+  border-radius:20px;
+  padding: 15px;
+}
+.heading{
+    font-size:26px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    color: #002265;
+    display:flex;
+    flex-direction:row;
+   
+}
+.daysstyle{
+  display:flex;
+  flex-direction:row ;
+  justify-content:space-evenly;
+}
+.buttonStyle{
+  width: 100%;
+}
+</style>
+<html>
+    <head>
+        <title> Bus Interface</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <script src="/javascripts/project.js"></script>
+    </head>
+    
+        <div class="maincontainer">
+            <div class="box">
+               <div class="heading">
+                <a href="/bus/displayallbus"><img src="/images/amit.png" width="30"></a>
+ <img src="/images/busicon1.png"width="80" height="70">
+              <b><i> BUS INTERFACE </i></b>
+               </div>
+              
+               <form action="/bus/bussubmit" method="post" enctype="multipart/form-data"  class="row g-3">
+                <div class="col-md-6">
+                  <label for="busname" class="form-label"><b>Bus Name</b></label>
+                  <input type="text" class="form-control" name="busname" id="busname">
+                </div>
+                <div class="col-md-6">
+                    <label for="bustype" class="form-label"><b>Bus Type</b></label>
+                    <select id="bustype" class="form-select" name="bustype">
+                      <option selected>Choose Bus type</option>
+                      <option>AC Bus</option>
+                      <option>NON-AC Bus</option>
+
+                    </select>
+                  </div>
+                  <div class="col-md-4">
+                    <label for="totalseats" class="form-label"><b>Total Seats</b></label>
+                    <input type="text" class="form-control" name="totalseats" id="totalseats">
+                  </div>
+                  <div class="col-md-8 ">
+                    <label for="days"class="form-label" ><b>Days</b></label>
+                    <div class="daysstyle">
+                    </label>
+                    
+                    <span class="form-check">
+                        <input class="form-check-input" type="checkbox" value="Mon" id="days" name="days">
+                        <label class="form-check-label" for="days">Mon
+                        </label>
+                    </span>
+
+                    <span class="form-check">
+                      <input class="form-check-input" type="checkbox" value="Tue" id="days" name="days">
+                      <label class="form-check-label" for="days">Tue
+                      </label>
+                  </span>
+
+                  <span class="form-check">
+                    <input class="form-check-input" type="checkbox" value="Wed" id="days" name="days">
+                    <label class="form-check-label" for="days">Wed
+                    </label>
+                </span>
+
+                <span class="form-check">
+                  <input class="form-check-input" type="checkbox" value="Thu" id="days"  name="days">
+                  <label class="form-check-label" for="days">Thu
+                  </label>
+              </span>
+
+              <span class="form-check">
+                <input class="form-check-input" type="checkbox" value="Fri" id="days"  name="days">
+                <label class="form-check-label" for="days">Fri
+                </label>
+            </span>
+
+            <span class="form-check">
+              <input class="form-check-input" type="checkbox" value="Sat" id="days"  name="days">
+              <label class="form-check-label" for="days">Sat
+              </label>
+          </span>
+
+          <span class="form-check">
+            <input class="form-check-input" type="checkbox" value="Sun" id="days"  name="days">
+            <label class="form-check-label" for="days">Sun
+            </label>
+        </span>
+
+      </div>
+    </div>
+
+      <div class="col-md-3">
+        <label for="sourcecity" class="form-label"><b>Source City</b></label>
+        <select id="sourcecity" name="sourcecity" class="form-select">
+          <option selected>Source City</option>
+        </select>
+      </div>
+
+      <div class="col-md-3">
+        <label for="departuretime" class="form-label"><b>Departure Time</b></label>
+        <input type="time" id="departuretime" name="departuretime" class="form-control">
+      </div>
+
+      <div class="col-md-3">
+        <label for="destinationcity" class="form-label"><b>Destination City</b></label>
+        <select id="destinationcity" name="destinationcity" class="form-select">
+          <option selected>Destination City</option>
+        </select>
+      </div>
+
+      <div class="col-md-3">
+        <label for="arrivaltime" class="form-label"><b>Arrival Time</b></label>
+        <input type="time" id="arrivaltime" name="arrivaltime" class="form-control">
+      </div>
+
+      <div class="col-md-6">
+        <label for="company" class="form-label"><b>Company</b></label>
+        <input type="text" id="company" name="company" class="form-control">
+      </div>
+
+      <div class="col-md-6">
+        <label for="logo" class="form-label"><b>Logo</b></label>
+        <input type="file" id="logo" name="logo" class="form-control">
+      </div>
+
+      <div class="col-md-6">
+        <button type="submit" class="btn btn-primary"><b>Submit</b></button>
+      </div>
+      
+      <div class="col-md-6">
+        <button type="reset" class="btn btn-primary"><b>Reset</b></button>
+      </div>
+
+      <div class="col-md-12"style="display:flex; justify-content:center; padding:5px;font-weight:bolder;">
+        <%=message%>
+      </div>
+  
+        </form>
+           
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+     integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+</html>

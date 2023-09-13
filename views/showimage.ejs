@@ -1,0 +1,14 @@
+<html>
+    <center>
+        <form action="/busenquiry/editimage" method="post" enctype="multipart/form-data">
+            <input type="hidden" value="<%=data.busid%>" name="busid">
+        <h3><%=data.busname%></h3>
+        <h3><%=data.company%></h3>
+        <img src="/images/<%=data.logo%>" width="250"><br><br>
+        <b> Upload New Image:</b><br><br>
+        <input type="file" require name="logo"><br><br>
+        <input type="Submit" value="Upload New Image">
+    </form>
+    </center>
+</html>
+

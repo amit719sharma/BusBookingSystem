@@ -1,0 +1,197 @@
+<style>
+    .maincontainer{
+        background:#dbbe02;
+        width:100vw;
+        height:100vh;
+        display: flex;
+        justify-content:center;
+        align-items:center;
+    }
+    .box
+    { width:70%;
+      height:80%;
+      background: #d9cd7f;
+      justify-content: center;
+      align-items: center;
+      border-radius:20px;
+      padding: 15px;
+    }
+    .heading{
+        font-size:26px;
+        letter-spacing: 2px;
+        font-weight: bold;
+        color: #002265;
+        display:flex;
+        flex-direction:row;
+       
+    }
+    .daysstyle{
+      display:flex;
+      flex-direction:row ;
+      justify-content:space-evenly;
+    }
+    .buttonStyle{
+      width: 100%;
+    }
+    </style>
+    <html>
+        <head>
+            <title> Bus Interface</title>
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+            <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+            <script src="/javascripts/project.js"></script>
+            <script>
+              $(document).ready(function(){
+               
+
+                  var dbdays=$('#dbdays').val().split(",")
+                  
+                  $('.days').map((i,item)=>{
+                  
+                  dbdays.map((d)=>{
+                  
+                  if($(item).val() ==d)
+                  
+                  {
+                  
+                  $(item).prop('checked', true)
+                  }
+                  
+                  })
+                  
+                  })
+              })
+            </script>
+        </head>
+        
+            <div class="maincontainer">
+                <div class="box">
+                   <div class="heading">
+                    <a href="/bus/displayallbus"><img src="/images/amit.png" width="30"></a>
+     <img src="/images/busicon1.png"width="80" height="70">
+                  <b><i> Bus Updation </i></b>
+                   </div>
+                  
+                   <form action="/bus/bus_edit_delete" method="post" class="row g-3">
+                    <input type="hidden" id="dbdays" value="<%=data.days%>">
+                    <input type="hidden" name="busid" value="<%=data.busid%>">
+                    <div class="col-md-6">
+                      <label for="busname" class="form-label"><b>Bus Name</b></label>
+                      <input type="text" class="form-control" name="busname" id="busname" value="<%=data.busname%>">
+                    </div>
+                   
+                    <div class="col-md-6">
+                        <label for="bustype" class="form-label"><b>Bus Type</b></label>
+                        <select id="bustype" class="form-select" name="bustype">
+                          <option><%= data.bustype %></option>
+                          <option>AC Bus</option>
+                          <option>NON-AC Bus</option>   
+                        </select>
+                      </div>
+                   
+                      <div class="col-md-4">
+                        <label for="totalseats" class="form-label"><b>Total Seats</b></label>
+                        <input type="text" value="<%=data.totalseats %>" class="form-control" name="totalseats" id="totalseats">
+                      </div>
+                      
+                      <div class="col-md-8 ">
+                        <label for="days"class="form-label" ><b>Select Bus Days</b></label>
+                        <div class="daysstyle">
+                          <span class="form-check">
+                              <input  class="form-check-input days" type="checkbox" value="Mon" id="days" name="days">
+                            <label class="form-check-label" for="days">Mon
+                            </label>
+                        </span>
+    
+                        <span class="form-check">
+                          <input  class="form-check-input days" type="checkbox" value="Tue" id="days" name="days">
+                          <label class="form-check-label" for="days">Tue
+                          </label>
+                      </span>
+    
+                      <span class="form-check">   
+                        <input class="form-check-input days" type="checkbox" value="Wed" id="days" name="days">
+                        <label class="form-check-label" for="days">Wed
+                        </label>
+                    </span>
+    
+                    <span class="form-check">  
+                      <input class="form-check-input days" type="checkbox" value="Thu" id="days"  name="days">
+                      <label class="form-check-label" for="days">Thu
+                      </label>
+                  </span>
+    
+                  <span class="form-check">  
+                    <input class="form-check-input days" type="checkbox" value="Fri" id="days"  name="days">
+                    <label class="form-check-label" for="days">Fri
+                    </label>
+                </span>
+    
+                <span class="form-check"> 
+                  <input class="form-check-input days" type="checkbox" value="Sat" id="days"  name="days">
+                  <label class="form-check-label" for="days">Sat
+                  </label>
+              </span>
+    
+              <span class="form-check"> 
+                <input class="form-check-input days" type="checkbox" value="Sun" id="days"  name="days">
+                <label class="form-check-label" for="days">Sun
+                </label>
+            </span>
+    
+          </div>
+        </div>
+       
+    
+          <div class="col-md-3">
+            <label for="sourcecity" class="form-label"><b>Source City</b></label>
+            <select id="sourcecity" name="sourcecity" class="form-select">
+              <option value="<%=data.sourcecity %>"><%=data.source %></option>
+            </select>
+          </div>
+         
+    
+          <div class="col-md-3">
+            <label for="departuretime" class="form-label"><b>Departure Time</b></label>
+            <input type="time" value="<%=data.departuretime%>" id="departuretime" name="departuretime" class="form-control">
+          </div>
+      
+           
+          <div class="col-md-3">
+            <label for="destinationcity" class="form-label"><b>Destination City</b></label>
+            <select id="destinationcity" name="destinationcity" class="form-select">
+              <option value="<%=data.destinationcity %>"><%=data.destination %></option>
+            </select>
+          </div>
+          
+
+    
+          <div class="col-md-3">
+            <label for="arrivaltime" class="form-label"><b>Arrival Time</b></label>
+            <input type="time" value="<%=data.arrivaltime%>" id="arrivaltime" name="arrivaltime" class="form-control">
+          </div>
+          
+    
+          <div class="col-md-12">
+            <label for="company" class="form-label"><b>Company</b></label>
+            <input type="text" value="<%=data.company%>" id="company" name="company" class="form-control">
+          </div>
+          
+          <div class="col-md-6">
+            <button type="submit" name="btn" value="Edit" class="btn btn-primary"><b>Edit</b></button>
+          </div>
+          
+          <div class="col-md-6">
+            <button type="submit" name="btn" value="Delete" class="btn btn-primary"><b>Delete</b></button>
+          </div>
+    
+          <!-- <div class="col-md-12"style="display:flex; justify-content:center; padding:5px;font-weight:bolder;">
+            <%=message%>
+          </div> -->
+      
+            </form>
+               
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    
+    </html>
